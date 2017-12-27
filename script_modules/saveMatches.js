@@ -4,7 +4,7 @@ const matches = "./data-sets/matches.csv"
 const MatchModel = require("../models/iplMatch");
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/iplTest', {
+mongoose.connect('mongodb://localhost/iplReactDB', {
   useMongoClient: true,
 });
 

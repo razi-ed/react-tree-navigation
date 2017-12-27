@@ -19,14 +19,16 @@
     "build": "webpack"
   },
   "dependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "axios": "^0.17.1",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "csvtojson": "^1.1.9",
     "express": "^4.16.2",
+    "fetch": "^1.1.0",
     "mongo": "^0.1.0",
-    "mongoose": "^4.13.7"
+    "mongoose": "^4.13.7",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "version": "1.0.0",
   "main": "app.js",

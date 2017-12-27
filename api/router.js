@@ -6,7 +6,7 @@ const connectToDB = require('./connectToDb');
 
 app.use(cors());
 connectToDB();
-
+app.get('/seasons', (req, res) => { require('./routes/seasonQueries')(req, res) })
 app.get('/:year/teams/wins', (req, res) => { require('./routes/teamQueries').wins(req, res) })
 app.get('/:year/teams/runs', (req, res) => { require('./routes/teamQueries').runs(req, res) })
 

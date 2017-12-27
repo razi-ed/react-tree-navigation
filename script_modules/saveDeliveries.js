@@ -4,7 +4,7 @@ const deliveries = "./data-sets/deliveries.csv"
 const DeliveryModel = require("../models/iplDelivery");
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/iplTest', {
+mongoose.connect('mongodb://localhost/iplReactDB', {
   useMongoClient: true,
 });
 
