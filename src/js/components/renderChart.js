@@ -1,5 +1,6 @@
-const renderChart = (year, category) => {
-  let source = ``
+const renderChart = function(year, category) {
+  console.log(year, category);
+  let source = `http://localhost:4756/${year}/${category}`;
   fetch(source)
     .then(res => {
       if (res.ok) {
@@ -20,13 +21,13 @@ const renderChart = (year, category) => {
         },
 
         xAxis: {
-          categories: Object.keys(data[id[0]][id[1]][id[2]])
+          categories: data['names']
         },
 
         series: [{
           type: 'column',
           colorByPoint: true,
-          data: Object.values(data[id[0]][id[1]][id[2]]),
+          data: data['data'],
           showInLegend: false
         }]
 
@@ -36,3 +37,6 @@ const renderChart = (year, category) => {
     .catch(error => this.setState({ error, isLoading: false }));
 
 }
+
+
+module.exports = renderChart

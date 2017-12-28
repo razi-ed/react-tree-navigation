@@ -18,14 +18,14 @@ const batsmanRoutes = {
         ])
       })
       .then((result, err) => {
-        // const name = 0;
-        // let data = result.map(b => [b["_id"], b["runs"]]);
-        // let names = data.map(b => b[name]);
-        // let batsmanRuns = {
-        //   data,
-        //   names
-        // }
-        res.send(result);
+        const name = 0;
+        let data = result.map(b => [b["_id"], b["runs"]]);
+        let names = data.map(b => b[name]);
+        let batsmanRuns = {
+          data,
+          names
+        }
+        res.send(batsmanRuns);
       })
       .catch(err => {
         res.status(500).send(err)
