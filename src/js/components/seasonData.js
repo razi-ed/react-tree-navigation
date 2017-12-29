@@ -13,7 +13,7 @@ console.log('clicked',name)
   render() {
     return ( 
             <ul>
-              <li onClick= {renderChart(this.props.year,"batting")}>Teams Wins</li>
+              <li>Teams Wins</li>
               <li>Batsmen Statistics</li>
               <li>Bowlers Statistics</li>
             </ul>
