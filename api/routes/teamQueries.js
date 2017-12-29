@@ -4,16 +4,20 @@ const deliveryModel = require('../../models/iplDelivery')
 const teamQueries = {
   wins: function(req, res) {
     matchModel.aggregate([{ $match: { "season": parseInt(req.params.year) } },
-        { $group: { _id: "$winner", total: { $sum: 1 } } }
+        { $group: { _id: "$winner", total: { $sum: 1 } } },
+        { $sort: { "total": -1 } },
+        { $limit: 3 },
+        { $project: { team: "$_id", wins: "$total" } }
       ]).then((result) => {
-        const name = 0;
-        let data = result.filter(t => t['_id'] !== "").map(e => [e['_id'], e['total']]);
-        let names = data.map(e => e[name]);
-        let winsData = {
-          data,
-          names,
-        };
-        res.send(winsData);
+        // const name = 0;
+        // let data = result.filter(t => t['_id'] !== "").map(e => [e['_id'], e['total']]);
+        // let names = data.map(e => e[name]);
+        // let winsData = {
+        //   data,
+        //   names,
+        // };
+        // res.send(winsData);
+        res.send(result);
       })
       .catch(err => {
         res.status(500).send(err)

@@ -14,18 +14,20 @@ const batsmanRoutes = {
           { $match: { "matchID": { $gte: parseInt(season.startId), $lte: parseInt(season.endId) } } },
           { $group: { _id: "$batsman", balls: { $sum: 1 }, runs: { $sum: "$batsmanRuns" } } },
           { $sort: { "runs": -1 } },
-          { $limit: 5 }
+          { $limit: 3 },
+          { $project: { batsman: "$_id", runs: "$runs" } }
         ])
       })
       .then((result, err) => {
-        const name = 0;
-        let data = result.map(b => [b["_id"], b["runs"]]);
-        let names = data.map(b => b[name]);
-        let batsmanRuns = {
-          data,
-          names
-        }
-        res.send(batsmanRuns);
+        // const name = 0;
+        // let data = result.map(b => [b["_id"], b["runs"]]);
+        // let names = data.map(b => b[name]);
+        // let batsmanRuns = {
+        //   data,
+        //   names
+        // }
+        // res.send(batsmanRuns);
+        res.send(result);
       })
       .catch(err => {
         res.status(500).send(err)

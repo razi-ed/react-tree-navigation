@@ -20,18 +20,21 @@ const bowlerRoutes = {
             }
           }, { $group: { _id: "$bowler", total: { $sum: 1 } } },
           { $sort: { "total": -1 } },
-          { $limit: 5 }
+          { $limit: 3 },
+          { $project: { bowler: "$_id", wickets: "$total" } }
+
         ])
       })
       .then((result, err) => {
-        const name = 0;
-        let data = result.map(b => [b["_id"], b["total"]]);
-        let names = data.map(b => b[name]);
-        let bowlersData = {
-          names,
-          data
-        }
-        res.send(bowlersData);
+        // const name = 0;
+        // let data = result.map(b => [b["_id"], b["total"]]);
+        // let names = data.map(b => b[name]);
+        // let bowlersData = {
+        //   names,
+        //   data
+        // }
+        // res.send(bowlersData);
+        res.send(result);
       })
       .catch(err => {
         res.status(500).send(err)
