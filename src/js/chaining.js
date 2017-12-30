@@ -9,6 +9,7 @@ const nodeGetter = fetch('http://localhost:4756/seasons')
   .then(res => res.json())
   .then(data => {
     let seasons = data.sort((a, b) => a - b);
+    console.log(seasons);
 
     var tree = {
       title: "IPL statistics",

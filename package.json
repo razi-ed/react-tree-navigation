@@ -1,5 +1,8 @@
 {
   "name": "mern-boiler-plate",
+  "quokka": {
+    "babel": true
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
