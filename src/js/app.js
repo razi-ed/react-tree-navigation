@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import '../css/style.css';
 
 var tree = {
-  title: "IPL statistics",
+  title: "IPL STATISTICS",
   childNodes: []
 };
 
@@ -40,6 +40,8 @@ class TreeNode extends React.Component {
     super(props);
     this.state = {
       visible: false,
+      isLoading: true,
+      error: null
     };
     this.toggle = this.toggle.bind(this)
   }
@@ -48,9 +50,19 @@ class TreeNode extends React.Component {
     this.setState({ visible: !this.state.visible });
   }
 
+  componentWillMount() {
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 750)  }
+
+
   render() {
     var childNodes;
     var classObj;
+
+    if (this.state.isLoading) {
+      return <div className="circle loader"></div>
+    }
 
     if (this.props.node.childNodes != null) {
       childNodes = this.props.node.childNodes.map(function(node, index) {
